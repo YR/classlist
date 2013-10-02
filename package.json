@@ -1,10 +1,10 @@
 {
-	"name": "dom.classlist",
+	"name": "classlist",
 	"description": "Cross-browser implementation and extension of element.classList",
-	"version": "0.0.1",
-	"author": "popeindustries <alex@pope-industries.com>",
+	"version": "0.2.0",
+	"author": "Alexander Pope <alexander.pope@nrk.no>",
 	"dependencies": {
-		"util.polyfill": "git://github.com/popeindustries/util.polyfill.git"
+		"lodash.indexof": "~2.2.0"
 	},
 	"devDependencies": {
 		"mocha": "*",
@@ -32,10 +32,10 @@
 	"buddy": {
 		"build": {
 			"js": {
-				"sources": ["node_modules/util.polyfill"],
+				"sources": [],
 				"targets": [{
 					"input": "index.js",
-					"output": "test/dom.classlist.js"
+					"output": "test/classlist.js"
 				}]
 			}
 		}
