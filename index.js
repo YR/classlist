@@ -1,4 +1,5 @@
-require('util.polyfill');
+var indexOf = require('lodash.indexof')
+	, useNative = document.documentElement.classList != null;
 
 var RE_TRIM = /^\s+|\s+$/g;
 
@@ -9,11 +10,11 @@ var RE_TRIM = /^\s+|\s+$/g;
  * @return {Boolean}
  */
 exports.hasClass = function(element, clas) {
-	if (element.classList != null) {
+	if (useNative) {
 		return element.classList.contains(clas);
 	} else {
 		var classes = element.className.replace(RE_TRIM, '').split(' ');
-		return classes.indexOf(clas) >= 0;
+		return indexOf(classes, clas) >= 0;
 	}
 };
 
@@ -41,7 +42,7 @@ exports.matchClass = function(element, pattern) {
  * @param {String} clas
  */
 exports.addClass = function(element, clas) {
-	if (element.classList != null) {
+	if (useNative) {
 		element.classList.add(clas);
 	} else {
 		element.className += ' ' + clas;
@@ -56,7 +57,7 @@ exports.addClass = function(element, clas) {
 exports.removeClass = function(element, clas) {
 	var c, classes;
 	if (clas) {
-		if (element.classList != null) {
+		if (useNative) {
 			element.classList.remove(clas);
 		} else {
 			var classes = element.className.replace(RE_TRIM, '').split(' ')

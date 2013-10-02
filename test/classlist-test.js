@@ -6,7 +6,7 @@ try {
   expect = require('expect.js');
 // .. or browser
 } catch (err) {
-  classlist = require('./dom.classlist');
+  classlist = require('./classlist');
   expect = window.expect;
 }
 
