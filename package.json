@@ -1,46 +1,31 @@
 {
-	"name": "classlist",
-	"description": "Cross-browser implementation and extension of element.classList",
-	"version": "0.2.0",
-	"author": "Alexander Pope <alexander.pope@nrk.no>",
-	"dependencies": {
-		"lodash.indexof": "~2.2.0"
-	},
-	"devDependencies": {
-		"mocha": "*",
-		"expect.js": "*",
-		"buddy": "*",
-		"browser-require": "git://github.com/popeindustries/browser-require.git"
-	},
-	"main": "index.js",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/popeindustries/dom.classlist.git"
-	},
-	"testling": {
-		"harness": "mocha-bdd",
-		"files": "test/classlist-test.js",
-		"browsers": {
-			"ie": [7,8,9,10],
-			"firefox": [13,17],
-			"chrome": [20,23],
-			"safari": [5.1],
-			"iphone": [6.0],
-			"ipad": [6.0]
-		}
-	},
-	"buddy": {
-		"build": {
-			"js": {
-				"sources": [],
-				"targets": [{
-					"input": "index.js",
-					"output": "test/classlist.js"
-				}]
-			}
-		}
-	},
-	"scripts": {
-		"test": "./node_modules/.bin/buddy build && open test/test-runner.html"
-	}
+  "name": "classlist",
+  "description": "Cross-browser implementation and extension of element.classList",
+  "version": "0.2.0",
+  "author": "Alexander Pope <alexander.pope@nrk.no>",
+  "dependencies": {
+    "lodash.indexof": "~2.4.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "expect.js": "*",
+    "buddy": "*"
+  },
+  "main": "index.js",
+  "repository": "git://github.com/popeindustries/dom.classlist.git",
+  "scripts": {
+    "test": "buddy build && mocha-phantomjs test/test-runner.html -t 4000"
+  },
+  "buddy": {
+    "build": {
+      "js": {
+        "targets": [{
+          "input": "index.js",
+          "output": "test/classlist.js",
+          "boilerplate": true
+        }]
+      }
+    }
+  },
+  "license": "MIT"
 }
