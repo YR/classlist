@@ -4,13 +4,14 @@ var classlist, expect, element;
 try {
   classlist = require('../index.js');
   expect = require('expect.js');
+  require('./sauce.js');
 // .. or browser
 } catch (err) {
   classlist = require('./classlist');
   expect = window.expect;
 }
 
-describe('dom.classlist', function() {
+describe('classList', function() {
   before(function() {
     element = document.createElement('div');
     element.className = 'test-class';

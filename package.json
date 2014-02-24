@@ -9,12 +9,16 @@
   "devDependencies": {
     "mocha": "*",
     "expect.js": "*",
-    "buddy": "*"
+    "buddy": "*",
+    "mocha-sauce": "git://github.com/pbakaus/mocha-sauce.git",
+    "term-canvas": "*"
   },
   "main": "index.js",
   "repository": "git://github.com/popeindustries/dom.classlist.git",
+  "license": "MIT",
   "scripts": {
-    "test": "buddy build && mocha-phantomjs test/test-runner.html -t 4000"
+    "test": "buddy build && mocha-phantomjs test/test-runner.html -t 4000",
+    "sauce": "node test/sauce.js"
   },
   "buddy": {
     "build": {
@@ -26,6 +30,5 @@
         }]
       }
     }
-  },
-  "license": "MIT"
+  }
 }
