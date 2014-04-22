@@ -4,7 +4,7 @@
   "version": "0.3.0",
   "author": "Alexander Pope <alexander.pope@nrk.no>",
   "dependencies": {
-    "lodash.indexof": "^2.4.0"
+    "lodash.indexof": "~2.4.0"
   },
   "devDependencies": {
     "mocha": "*",
