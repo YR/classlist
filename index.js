@@ -1,5 +1,4 @@
-var indexOf = require('lodash.indexof')
-	, useNative = document.documentElement.classList != null;
+var useNative = document.documentElement.classList != null;
 
 var RE_TRIM = /^\s+|\s+$/g;
 
@@ -14,7 +13,7 @@ exports.hasClass = function(element, clas) {
 		return element.classList.contains(clas);
 	} else {
 		var classes = element.className.replace(RE_TRIM, '').split(' ');
-		return indexOf(classes, clas) >= 0;
+		return contains(classes, clas);
 	}
 };
 
@@ -112,3 +111,16 @@ exports.addTemporaryClass = function(element, clas, duration) {
 		exports.removeClass(element, clas);
 	}), duration);
 };
+
+/**
+ * Determine if 'arr' contains 'item'
+ * @param {Array} arr
+ * @param {Object|String|Number} item
+ * @returns {Boolean}
+ */
+function contains (arr, item) {
+	for (var i = 0, n = arr.length; i < n; i++) {
+		if (arr[i] === item) return true;
+	}
+	return false;
+}
