@@ -1,5 +1,5 @@
 {
-  "name": "classlist",
+  "name": "@yr/classlist",
   "description": "Cross-browser implementation and extension of element.classList",
   "version": "0.4.0",
   "author": "Alexander Pope <alexander.pope@nrk.no>",
@@ -15,7 +15,6 @@
   "main": "index.js",
   "repository": "git://github.com/popeindustries/dom.classlist.git",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "test": "buddy build && mocha-phantomjs test/test-runner.html -t 4000",
     "sauce": "node test/sauce.js"
