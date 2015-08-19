@@ -1,17 +1,9 @@
 'use strict';
 
-var classlist, expect, element;
+var classlist = require('src/index.js')
+  , expect = window.expect
 
-// Make it work in node..
-try {
-  classlist = require('../index.js');
-  expect = require('expect.js');
-  require('./sauce.js');
-// .. or browser
-} catch (err) {
-  classlist = require('index.js');
-  expect = window.expect;
-}
+  , element;
 
 describe('classList', function() {
   before(function() {

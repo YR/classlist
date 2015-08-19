@@ -73,7 +73,7 @@
 	root.require = require;
 
 })((typeof window !== 'undefined') ? window : global);
-require.register('index.js', function(require, module, exports) {
+require.register('src/index.js', function(require, module, exports) {
     'use strict';
     
     var useNative = document.documentElement.classList != null;

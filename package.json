@@ -16,17 +16,25 @@
   "repository": "git://github.com/popeindustries/dom.classlist.git",
   "license": "MIT",
   "scripts": {
+    "prepublish": "buddy build",
     "test": "buddy build && mocha-phantomjs test/test-runner.html"
   },
   "browser": {
   },
   "buddy": {
     "build": {
-      "targets": [{
-        "input": "index.js",
-        "output": "test/lib.js",
-        "boilerplate": true
-      }]
+      "targets": [
+        {
+          "input": "src",
+          "output": ".",
+          "modular": false
+        },
+        {
+          "input": "src/index.js",
+          "output": "test/lib.js",
+          "boilerplate": true
+        }
+      ]
     }
   }
 }
