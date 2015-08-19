@@ -1,33 +1,32 @@
 {
   "name": "@yr/classlist",
   "description": "Cross-browser implementation and extension of element.classList",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "author": "Alexander Pope <alexander.pope@nrk.no>",
   "dependencies": {
   },
   "devDependencies": {
     "mocha": "*",
-    "expect.js": "*",
-    "buddy": "*",
-    "mocha-sauce": "git://github.com/pbakaus/mocha-sauce.git",
-    "term-canvas": "*"
+    "buddy": "3.0.0-beta-6",
+    "expect.js": "0.3.1",
+    "mocha": "*",
+    "transfigure-babel": "5.8.22"
   },
   "main": "index.js",
   "repository": "git://github.com/popeindustries/dom.classlist.git",
   "license": "MIT",
   "scripts": {
-    "test": "buddy build && mocha-phantomjs test/test-runner.html -t 4000",
-    "sauce": "node test/sauce.js"
+    "test": "buddy build && mocha-phantomjs test/test-runner.html"
+  },
+  "browser": {
   },
   "buddy": {
     "build": {
-      "js": {
-        "targets": [{
-          "input": "index.js",
-          "output": "test/classlist.js",
-          "boilerplate": true
-        }]
-      }
+      "targets": [{
+        "input": "index.js",
+        "output": "test/lib.js",
+        "boilerplate": true
+      }]
     }
   }
 }
