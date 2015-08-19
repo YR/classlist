@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "buddy": "3.0.0-beta-6",
+    "buddy": "~3.0",
     "expect.js": "0.3.1",
     "mocha": "*",
     "transfigure-babel": "5.8.22"
