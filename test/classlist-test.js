@@ -1,3 +1,5 @@
+'use strict';
+
 var classlist, expect, element;
 
 // Make it work in node..
@@ -7,7 +9,7 @@ try {
   require('./sauce.js');
 // .. or browser
 } catch (err) {
-  classlist = require('./classlist');
+  classlist = require('index.js');
   expect = window.expect;
 }
 

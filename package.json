@@ -8,9 +8,10 @@
   "devDependencies": {
     "mocha": "*",
     "expect.js": "*",
-    "buddy": "*",
+    "buddy": "3.0.0-beta-6",
     "mocha-sauce": "git://github.com/pbakaus/mocha-sauce.git",
-    "term-canvas": "*"
+    "term-canvas": "*",
+    "transfigure-babel": "5.8.22"
   },
   "main": "index.js",
   "repository": "git://github.com/popeindustries/dom.classlist.git",
@@ -19,15 +20,15 @@
     "test": "buddy build && mocha-phantomjs test/test-runner.html -t 4000",
     "sauce": "node test/sauce.js"
   },
+  "browser": {
+  },
   "buddy": {
     "build": {
-      "js": {
-        "targets": [{
-          "input": "index.js",
-          "output": "test/classlist.js",
-          "boilerplate": true
-        }]
-      }
+      "targets": [{
+        "input": "index.js",
+        "output": "test/classlist.js",
+        "boilerplate": true
+      }]
     }
   }
 }

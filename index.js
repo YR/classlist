@@ -1,6 +1,8 @@
-var useNative = document.documentElement.classList != null;
+'use strict';
 
-var RE_TRIM = /^\s+|\s+$/g;
+const useNative = document.documentElement.classList != null;
+
+const RE_TRIM = /^\s+|\s+$/g;
 
 /**
  * Check if 'element' has class 'clas'
@@ -12,7 +14,7 @@ exports.hasClass = function(element, clas) {
 	if (useNative) {
 		return element.classList.contains(clas);
 	} else {
-		var classes = element.className.replace(RE_TRIM, '').split(' ');
+		const classes = element.className.replace(RE_TRIM, '').split(' ');
 		return contains(classes, clas);
 	}
 };
@@ -24,9 +26,11 @@ exports.hasClass = function(element, clas) {
  * @return {String}
  */
 exports.matchClass = function(element, pattern) {
-	var classes = element.className.replace(RE_TRIM, '').split(' ')
-		, clas;
-	for (var i = 0, n = classes.length; i < n; i++) {
+	const classes = element.className.replace(RE_TRIM, '').split(' ');
+
+	let clas;
+
+	for (let i = 0, n = classes.length; i < n; i++) {
 		clas = classes[i];
 		if (clas.indexOf(pattern) !== -1) {
 			return clas;
@@ -54,14 +58,17 @@ exports.addClass = function(element, clas) {
  * @param {String} clas
  */
 exports.removeClass = function(element, clas) {
-	var c, classes;
+	let c
+		, classes;
+
 	if (clas) {
 		if (useNative) {
 			element.classList.remove(clas);
 		} else {
-			var classes = element.className.replace(RE_TRIM, '').split(' ')
+			let classes = element.className.replace(RE_TRIM, '').split(' ')
 				, results = [];
-			for (var i = 0, n = classes.length; i < n; i++) {
+
+			for (let i = 0, n = classes.length; i < n; i++) {
 				if (classes[i] !== clas) results.push(classes[i]);
 			}
 			element.className = results.join(' ');
@@ -119,7 +126,7 @@ exports.addTemporaryClass = function(element, clas, duration) {
  * @returns {Boolean}
  */
 function contains (arr, item) {
-	for (var i = 0, n = arr.length; i < n; i++) {
+	for (let i = 0, n = arr.length; i < n; i++) {
 		if (arr[i] === item) return true;
 	}
 	return false;
