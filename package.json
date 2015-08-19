@@ -1,7 +1,7 @@
 {
   "name": "@yr/classlist",
   "description": "Cross-browser implementation and extension of element.classList",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "author": "Alexander Pope <alexander.pope@nrk.no>",
   "dependencies": {
   },
