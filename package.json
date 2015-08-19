@@ -7,18 +7,16 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "expect.js": "*",
     "buddy": "3.0.0-beta-6",
-    "mocha-sauce": "git://github.com/pbakaus/mocha-sauce.git",
-    "term-canvas": "*",
+    "expect.js": "0.3.1",
+    "mocha": "*",
     "transfigure-babel": "5.8.22"
   },
   "main": "index.js",
   "repository": "git://github.com/popeindustries/dom.classlist.git",
   "license": "MIT",
   "scripts": {
-    "test": "buddy build && mocha-phantomjs test/test-runner.html -t 4000",
-    "sauce": "node test/sauce.js"
+    "test": "buddy build && mocha-phantomjs test/test-runner.html"
   },
   "browser": {
   },
@@ -26,7 +24,7 @@
     "build": {
       "targets": [{
         "input": "index.js",
-        "output": "test/classlist.js",
+        "output": "test/lib.js",
         "boilerplate": true
       }]
     }

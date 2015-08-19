@@ -15,6 +15,7 @@ exports.hasClass = function(element, clas) {
 		return element.classList.contains(clas);
 	} else {
 		const classes = element.className.replace(RE_TRIM, '').split(' ');
+
 		return contains(classes, clas);
 	}
 };
@@ -58,15 +59,13 @@ exports.addClass = function(element, clas) {
  * @param {String} clas
  */
 exports.removeClass = function(element, clas) {
-	let c
-		, classes;
-
 	if (clas) {
 		if (useNative) {
 			element.classList.remove(clas);
 		} else {
-			let classes = element.className.replace(RE_TRIM, '').split(' ')
-				, results = [];
+			const classes = element.className.replace(RE_TRIM, '').split(' ');
+
+			let results = [];
 
 			for (let i = 0, n = classes.length; i < n; i++) {
 				if (classes[i] !== clas) results.push(classes[i]);

@@ -91,6 +91,7 @@ require.register('index.js', function(require, module, exports) {
     		return element.classList.contains(clas);
     	} else {
     		var classes = element.className.replace(RE_TRIM, '').split(' ');
+    
     		return contains(classes, clas);
     	}
     };
@@ -134,18 +135,16 @@ require.register('index.js', function(require, module, exports) {
      * @param {String} clas
      */
     exports.removeClass = function (element, clas) {
-    	var c = undefined,
-    	    classes = undefined;
-    
     	if (clas) {
     		if (useNative) {
     			element.classList.remove(clas);
     		} else {
-    			var _classes = element.className.replace(RE_TRIM, '').split(' '),
-    			    results = [];
+    			var classes = element.className.replace(RE_TRIM, '').split(' ');
     
-    			for (var i = 0, n = _classes.length; i < n; i++) {
-    				if (_classes[i] !== clas) results.push(_classes[i]);
+    			var results = [];
+    
+    			for (var i = 0, n = classes.length; i < n; i++) {
+    				if (classes[i] !== clas) results.push(classes[i]);
     			}
     			element.className = results.join(' ');
     		}

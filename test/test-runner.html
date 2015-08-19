@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>classList - tests</title>
+	<title>classlist - tests</title>
 	<link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
 </head>
 <body>
@@ -13,11 +13,11 @@
 		mocha.ui('bdd');
 		mocha.reporter('html');
 	</script>
-	<script src="classlist.js"></script>
-	<script src="classlist-test.js"></script>
-	<script src="../node_modules/mocha-sauce/client.js"></script>
+	<script src="lib.js"></script>
+	<script src="lib-test.js"></script>
 	<script>
-		mochaSaucePlease();
+		if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+		else { mocha.run(); }
 	</script>
 </body>
 </html>
