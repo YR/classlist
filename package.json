@@ -6,14 +6,13 @@
   "dependencies": {
   },
   "devDependencies": {
-    "mocha": "*",
     "buddy": "~3.0",
-    "expect.js": "0.3.1",
+    "expect.js": "*",
     "mocha": "*",
-    "transfigure-babel": "5.8.22"
+    "transfigure-babel": "~5.8"
   },
   "main": "index.js",
-  "repository": "git://github.com/popeindustries/dom.classlist.git",
+  "repository": "git://github.com/yr/classlist.git",
   "license": "MIT",
   "scripts": {
     "prepublish": "buddy build",
