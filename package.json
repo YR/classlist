@@ -9,6 +9,7 @@
     "buddy": "~3.0",
     "expect.js": "*",
     "mocha": "*",
+    "mocha-phantomjs": "*",
     "transfigure-babel": "~5.8"
   },
   "main": "index.js",
