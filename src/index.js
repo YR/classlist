@@ -11,13 +11,13 @@ const RE_TRIM = /^\s+|\s+$/g;
  * @return {Boolean}
  */
 exports.hasClass = function(element, clas) {
-	if (useNative) {
-		return element.classList.contains(clas);
-	} else {
-		const classes = element.className.replace(RE_TRIM, '').split(' ');
+  if (useNative) {
+    return element.classList.contains(clas);
+  } else {
+    const classes = element.className.replace(RE_TRIM, '').split(' ');
 
-		return contains(classes, clas);
-	}
+    return contains(classes, clas);
+  }
 };
 
 /**
@@ -27,17 +27,17 @@ exports.hasClass = function(element, clas) {
  * @return {String}
  */
 exports.matchClass = function(element, pattern) {
-	const classes = element.className.replace(RE_TRIM, '').split(' ');
+  const classes = element.className.replace(RE_TRIM, '').split(' ');
 
-	let clas;
+  let clas;
 
-	for (let i = 0, n = classes.length; i < n; i++) {
-		clas = classes[i];
-		if (clas.indexOf(pattern) !== -1) {
-			return clas;
-		}
-	}
-	return '';
+  for (let i = 0, n = classes.length; i < n; i++) {
+    clas = classes[i];
+    if (clas.indexOf(pattern) !== -1) {
+      return clas;
+    }
+  }
+  return '';
 };
 
 /**
@@ -46,11 +46,11 @@ exports.matchClass = function(element, pattern) {
  * @param {String} clas
  */
 exports.addClass = function(element, clas) {
-	if (useNative) {
-		element.classList.add(clas);
-	} else {
-		element.className += ' ' + clas;
-	}
+  if (useNative) {
+    element.classList.add(clas);
+  } else {
+    element.className += ' ' + clas;
+  }
 };
 
 /**
@@ -59,20 +59,20 @@ exports.addClass = function(element, clas) {
  * @param {String} clas
  */
 exports.removeClass = function(element, clas) {
-	if (clas) {
-		if (useNative) {
-			element.classList.remove(clas);
-		} else {
-			const classes = element.className.replace(RE_TRIM, '').split(' ');
+  if (clas) {
+    if (useNative) {
+      element.classList.remove(clas);
+    } else {
+      const classes = element.className.replace(RE_TRIM, '').split(' ');
 
-			let results = [];
+      let results = [];
 
-			for (let i = 0, n = classes.length; i < n; i++) {
-				if (classes[i] !== clas) results.push(classes[i]);
-			}
-			element.className = results.join(' ');
-		}
-	}
+      for (let i = 0, n = classes.length; i < n; i++) {
+        if (classes[i] !== clas) results.push(classes[i]);
+      }
+      element.className = results.join(' ');
+    }
+  }
 };
 
 /**
@@ -81,11 +81,11 @@ exports.removeClass = function(element, clas) {
  * @param {String} clas
  */
 exports.toggleClass = function(element, clas) {
-	if (exports.hasClass(element, clas)) {
-		exports.removeClass(element, clas);
-	} else {
-		exports.addClass(element, clas);
-	}
+  if (exports.hasClass(element, clas)) {
+    exports.removeClass(element, clas);
+  } else {
+    exports.addClass(element, clas);
+  }
 };
 
 /**
@@ -94,15 +94,15 @@ exports.toggleClass = function(element, clas) {
  * @param {String} clas
  */
 exports.replaceClass = function(element, clasOld, clasNew) {
-	if (clasOld) {
-		if (clasNew) {
-			element.className = element.className.replace(clasOld, clasNew);
-		} else {
-			exports.removeClass(element, clasOld);
-		}
-	} else if (clasNew) {
-		exports.addClass(element, clasNew);
-	}
+  if (clasOld) {
+    if (clasNew) {
+      element.className = element.className.replace(clasOld, clasNew);
+    } else {
+      exports.removeClass(element, clasOld);
+    }
+  } else if (clasNew) {
+    exports.addClass(element, clasNew);
+  }
 };
 
 /**
@@ -112,10 +112,10 @@ exports.replaceClass = function(element, clasOld, clasNew) {
  * @param {Number} duration
  */
 exports.addTemporaryClass = function(element, clas, duration) {
-	exports.addClass(element, clas);
-	setTimeout((function() {
-		exports.removeClass(element, clas);
-	}), duration);
+  exports.addClass(element, clas);
+  setTimeout((function() {
+    exports.removeClass(element, clas);
+  }), duration);
 };
 
 /**
@@ -125,8 +125,8 @@ exports.addTemporaryClass = function(element, clas, duration) {
  * @returns {Boolean}
  */
 function contains (arr, item) {
-	for (let i = 0, n = arr.length; i < n; i++) {
-		if (arr[i] === item) return true;
-	}
-	return false;
+  for (let i = 0, n = arr.length; i < n; i++) {
+    if (arr[i] === item) return true;
+  }
+  return false;
 }
