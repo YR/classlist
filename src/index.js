@@ -1,34 +1,33 @@
 'use strict';
 
-const useNative = document.documentElement.classList != null;
+const useNative = document.documentElement.classList != null
 
-const RE_TRIM = /^\s+|\s+$/g;
+  , RE_TRIM = /^\s+|\s+$/g;
 
 /**
  * Check if 'element' has class 'clas'
  * @param {Element} element
  * @param {String} clas
- * @return {Boolean}
+ * @returns {Boolean}
  */
-exports.hasClass = function(element, clas) {
+exports.hasClass = function (element, clas) {
   if (useNative) {
     return element.classList.contains(clas);
-  } else {
-    const classes = element.className.replace(RE_TRIM, '').split(' ');
-
-    return contains(classes, clas);
   }
+
+  const classes = element.className.replace(RE_TRIM, '').split(' ');
+
+  return contains(classes, clas);
 };
 
 /**
  * Check if 'element' has a class matching 'pattern'
  * @param {Element} element
  * @param {String} pattern
- * @return {String}
+ * @returns {String}
  */
-exports.matchClass = function(element, pattern) {
+exports.matchClass = function (element, pattern) {
   const classes = element.className.replace(RE_TRIM, '').split(' ');
-
   let clas;
 
   for (let i = 0, n = classes.length; i < n; i++) {
@@ -45,7 +44,7 @@ exports.matchClass = function(element, pattern) {
  * @param {Element} element
  * @param {String} clas
  */
-exports.addClass = function(element, clas) {
+exports.addClass = function (element, clas) {
   if (useNative) {
     element.classList.add(clas);
   } else {
@@ -58,7 +57,7 @@ exports.addClass = function(element, clas) {
  * @param {Element} element
  * @param {String} clas
  */
-exports.removeClass = function(element, clas) {
+exports.removeClass = function (element, clas) {
   if (clas) {
     if (useNative) {
       element.classList.remove(clas);
@@ -80,7 +79,7 @@ exports.removeClass = function(element, clas) {
  * @param {Element} element
  * @param {String} clas
  */
-exports.toggleClass = function(element, clas) {
+exports.toggleClass = function (element, clas) {
   if (exports.hasClass(element, clas)) {
     exports.removeClass(element, clas);
   } else {
@@ -91,9 +90,10 @@ exports.toggleClass = function(element, clas) {
 /**
  * Replace class 'clasOld' with 'clasNew' on 'element'
  * @param {Element} element
- * @param {String} clas
+ * @param {String} clasOld
+ * @param {String} clasNew
  */
-exports.replaceClass = function(element, clasOld, clasNew) {
+exports.replaceClass = function (element, clasOld, clasNew) {
   if (clasOld) {
     if (clasNew) {
       element.className = element.className.replace(clasOld, clasNew);
@@ -111,9 +111,9 @@ exports.replaceClass = function(element, clasOld, clasNew) {
  * @param {String} clas
  * @param {Number} duration
  */
-exports.addTemporaryClass = function(element, clas, duration) {
+exports.addTemporaryClass = function (element, clas, duration) {
   exports.addClass(element, clas);
-  setTimeout((function() {
+  setTimeout((function () {
     exports.removeClass(element, clas);
   }), duration);
 };
