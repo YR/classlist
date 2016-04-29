@@ -1,7 +1,8 @@
 'use strict';
 
-var useNative = document.documentElement.classList != null,
-    RE_TRIM = /^\s+|\s+$/g;
+var useNative = document.documentElement.classList != null;
+
+var RE_TRIM = /^\s+|\s+$/g;
 
 /**
  * Check if 'element' has class 'clas'
@@ -27,7 +28,7 @@ exports.hasClass = function (element, clas) {
  */
 exports.matchClass = function (element, pattern) {
   var classes = element.className.replace(RE_TRIM, '').split(' ');
-  var clas = undefined;
+  var clas = void 0;
 
   for (var i = 0, n = classes.length; i < n; i++) {
     clas = classes[i];
@@ -62,7 +63,6 @@ exports.removeClass = function (element, clas) {
       element.classList.remove(clas);
     } else {
       var classes = element.className.replace(RE_TRIM, '').split(' ');
-
       var results = [];
 
       for (var i = 0, n = classes.length; i < n; i++) {

@@ -1,8 +1,8 @@
 'use strict';
 
-const useNative = document.documentElement.classList != null
+const useNative = document.documentElement.classList != null;
 
-  , RE_TRIM = /^\s+|\s+$/g;
+const RE_TRIM = /^\s+|\s+$/g;
 
 /**
  * Check if 'element' has class 'clas'
@@ -63,7 +63,6 @@ exports.removeClass = function (element, clas) {
       element.classList.remove(clas);
     } else {
       const classes = element.className.replace(RE_TRIM, '').split(' ');
-
       let results = [];
 
       for (let i = 0, n = classes.length; i < n; i++) {
