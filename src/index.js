@@ -1,131 +1,30 @@
 'use strict';
 
-const useNative = document.documentElement.classList != null;
-
-const RE_TRIM = /^\s+|\s+$/g;
-
-/**
- * Check if 'element' has class 'clas'
- * @param {Element} element
- * @param {String} clas
- * @returns {Boolean}
- */
-exports.hasClass = function (element, clas) {
-  if (useNative) {
-    return element.classList.contains(clas);
-  }
-
-  const classes = element.className.replace(RE_TRIM, '').split(' ');
-
-  return contains(classes, clas);
-};
-
-/**
- * Check if 'element' has a class matching 'pattern'
- * @param {Element} element
- * @param {String} pattern
- * @returns {String}
- */
-exports.matchClass = function (element, pattern) {
-  const classes = element.className.replace(RE_TRIM, '').split(' ');
-  let clas;
-
-  for (let i = 0, n = classes.length; i < n; i++) {
-    clas = classes[i];
-    if (clas.indexOf(pattern) !== -1) {
-      return clas;
+module.exports = {
+  contains(element, token) {
+    return element.classList.contains(token);
+  },
+  add(element, ...tokens) {
+    // Some browsers don't support multiple tokens...
+    for (let i = 0, n = tokens.length; i < n; i++) {
+      element.classList.add(tokens[i]);
     }
-  }
-  return '';
-};
-
-/**
- * Add class 'clas' to 'element'
- * @param {Element} element
- * @param {String} clas
- */
-exports.addClass = function (element, clas) {
-  if (useNative) {
-    element.classList.add(clas);
-  } else {
-    element.className += ' ' + clas;
-  }
-};
-
-/**
- * Remove class 'clas' from 'element'
- * @param {Element} element
- * @param {String} clas
- */
-exports.removeClass = function (element, clas) {
-  if (clas) {
-    if (useNative) {
-      element.classList.remove(clas);
-    } else {
-      const classes = element.className.replace(RE_TRIM, '').split(' ');
-      let results = [];
-
-      for (let i = 0, n = classes.length; i < n; i++) {
-        if (classes[i] !== clas) results.push(classes[i]);
-      }
-      element.className = results.join(' ');
+  },
+  remove(element, ...tokens) {
+    // Some browsers don't support multiple tokens...
+    for (let i = 0, n = tokens.length; i < n; i++) {
+      element.classList.remove(tokens[i]);
     }
-  }
-};
-
-/**
- * Toggle class 'clas' on 'element'
- * @param {Element} element
- * @param {String} clas
- */
-exports.toggleClass = function (element, clas) {
-  if (exports.hasClass(element, clas)) {
-    exports.removeClass(element, clas);
-  } else {
-    exports.addClass(element, clas);
-  }
-};
-
-/**
- * Replace class 'clasOld' with 'clasNew' on 'element'
- * @param {Element} element
- * @param {String} clasOld
- * @param {String} clasNew
- */
-exports.replaceClass = function (element, clasOld, clasNew) {
-  if (clasOld) {
-    if (clasNew) {
-      element.className = element.className.replace(clasOld, clasNew);
-    } else {
-      exports.removeClass(element, clasOld);
+  },
+  replace(element, oldToken, newToken) {
+    element.classList.replace(oldToken, newToken);
+  },
+  toggle(element, token, force) {
+    // Some browser don't support 'force' argument
+    if (force != null) {
+      element.classList[force ? 'add' : 'remove'](token);
+      return !!force;
     }
-  } else if (clasNew) {
-    exports.addClass(element, clasNew);
+    return element.classList.toggle(token);
   }
 };
-
-/**
- * Add class 'clas' to 'element', and remove after 'duration' milliseconds
- * @param {Element} element
- * @param {String} clas
- * @param {Number} duration
- */
-exports.addTemporaryClass = function (element, clas, duration) {
-  exports.addClass(element, clas);
-  setTimeout((function () {
-    exports.removeClass(element, clas);
-  }), duration);
-};
-
-/**
- * Determine if 'arr' contains 'item'
- * @param {Array} arr
- * @param {Object|String|Number} item
- * @returns {Boolean}
- */
-function contains (arr, item) {
-  for (let i = 0, n = arr.length; i < n; i++) {
-    if (arr[i] === item) return true;
-  }
-  return false;
-}
