@@ -3,8 +3,7 @@
   "description": "Ponyfill to fix element.classList browser inconsistencies",
   "version": "2.0.0-beta-1",
   "author": "Alexander Pope <alexander.pope@nrk.no>",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-plugin-syntax-trailing-function-commas": "6.22.0",
     "babel-plugin-transform-async-generator-functions": "6.24.1",
@@ -35,6 +34,7 @@
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.4",
     "mocha": "*"
   },
   "main": "src/index.js",

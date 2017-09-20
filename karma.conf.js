@@ -2,7 +2,7 @@ module.exports = function(config) {
   config.set({
     frameworks: ['mocha', 'chai'],
     files: ['test/test.js'],
-    reporters: ['dots'],
+    reporters: ['mocha'],
     port: 9876, // karma web server port
     colors: true,
     logLevel: config.LOG_INFO,
