@@ -37,14 +37,13 @@
     "karma-mocha-reporter": "^2.2.4",
     "mocha": "*"
   },
-  "main": "src/index.js",
+  "main": "index.js",
   "repository": "https://github.com/YR/classlist.git",
   "license": "MIT",
   "scripts": {
     "prepublish": "buddy build",
     "test": "buddy build && karma start --single-run --browsers ChromeHeadless karma.conf.js"
   },
-  "browser": "index.js",
   "buddy": {
     "build": [
       {
