@@ -1,37 +1,18 @@
-Element class attribute manipulation
+[![NPM Version](https://img.shields.io/npm/v/@yr/classlist.svg?style=flat)](https://npmjs.org/package/@yr/classlist)
+[![Build Status](https://img.shields.io/travis/YR/classlist.svg?style=flat)](https://travis-ci.org/YR/classlist?branch=master)
+
+Ponyfill to fix [`element.classList`](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList) browser inconsistencies. Fixes multiple arguments for `add()/remove()`, adds missing `force` argument for `toggle()`, and shadows `contains()/replace()` for convenience.
+
+*__Note__: does not fix missing `classList` on SVG/MathML elements on some platforms.*
 
 ## Usage
 
-```javascript
-var classList = require('dom.classlist')
-  , el = document.getElementById('myElement');
+```js
+const classList = require('@yr/classlist');
 
-el.className = 'my-class some-class another-class';
-classList.hasClass(el, 'my-class'); // => true
-classList.addClass(el, 'yet-another-class'); // 'my-class some-class another-class yet-another-class'
-classList.matchClass(el, 'yet-another'); // => 'yet-another-class'
-classList.removeClass(el, 'yet-another-class'); // 'my-class some-class another-class'
-classList.toggleClass(el, 'my-class'); // 'some-class another-class'
-classList.replaceClass(el, 'some-class', 'some-other-class'); // 'some-other-class another-class'
-classlist.addTemporaryClass(el, 'anim-class', 2000); // add 'anim-class' then remove after 2000ms
+// Add/remove multiple classes
+classList.add(element, 'foo', 'bar');
+classList.remove(element, 'foo', 'bar');
+// Respect 'force' argument
+classList.toggle(element, 'foo', Math.random() > 0.5);
 ```
-
-## API
-
-**hasClass(element, clas)**: `Boolean` indicating whether `element` has `clas` applied
-
-**matchClass(element, pattern)**: retrieve first class that matches simple string `pattern`
-
-```javascript
-classList.matchClass(el, 'my-'); // => 'my-class'
-```
-
-**addClass(element, clas)**: add `clas` to `element`
-
-**removeClass(element, clas)**: remove `clas` from `element`
-
-**toggleClass(element, clas)**: add/remove `clas` from `element`
-
-**replaceClass(element, clasOld, clasNew)**: replace `clasOld` with `clasNew`
-
-**addTemporaryClass(element, clas, duration)**: add `clas` to `element`, removing after `duration` (in milliseconds)

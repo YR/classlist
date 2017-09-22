@@ -1,3 +1,5 @@
 node_modules
-.buddy-filelog
 npm-debug.log
+yarn-error.log
+/index.js
+/test/test.js
