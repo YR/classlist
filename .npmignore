@@ -1,5 +1,4 @@
-/test
-/src
-karma.conf.js
+src/
+karma.conf.ts
 .travis.yml
 yarn.lock
