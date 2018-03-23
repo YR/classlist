@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "types": ["karma", "mocha", "chai"]
+  },
+  "include": ["**/*.spec.ts"]
+}
