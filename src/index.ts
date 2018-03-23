@@ -1,28 +1,53 @@
-export function contains(element: Element, token: string) {
+/**
+ * Wrapper around {@link Element.classList.contains}.
+ */
+export function containsClass(element: Element, token: string) {
   return element.classList.contains(token);
 }
 
-export function add(element: Element, ...tokens: Array<string>) {
+/**
+ * Add class name(s) from an element in a cross-browser safe way.
+ * @see {@link Element.classList.add}
+ * @param element {Element} The element to add class name(s) from
+ * @param tokens {string} The class name(s) to add
+ */
+export function addClass(element: Element, ...tokens: Array<string>) {
   // Some browsers don't support multiple tokens...
   for (let i = 0, n = tokens.length; i < n; i++) {
     element.classList.add(tokens[i]);
   }
 }
 
-export function remove(element: Element, ...tokens: Array<string>) {
+/**
+ * Remove class name(s) from an element in a cross-browser safe way.
+ * @see {@link Element.classList.remove}
+ * @param element {Element} The element to remove class name(s) from
+ * @param tokens {string} The class name(s) to remove
+ */
+export function removeClass(element: Element, ...tokens: Array<string>) {
   // Some browsers don't support multiple tokens...
   for (let i = 0, n = tokens.length; i < n; i++) {
     element.classList.remove(tokens[i]);
   }
 }
 
-export function replace(element: Element, oldToken: string, newToken: string) {
-  // 'replace'-function is missing in DOMTokenList. See: https://github.com/Microsoft/TypeScript/issues/22466
+/**
+ * Wrapper around {@link Element.classList.replace}.
+ */
+export function replaceClass(element: Element, oldToken: string, newToken: string) {
   // @ts-ignore
   element.classList.replace(oldToken, newToken);
 }
 
-export function toggle(element: Element, token: string, force?: boolean) {
+/**
+ * Toggle class name on an element in a cross-browser safe way.
+ * @see {@link Element.classList.toggle}
+ * @param {Element} element - The element to toggle class on
+ * @param {string} token - The class name to toggle
+ * @param {boolean} [force] - If `true` always add the class name, if `false` always remove.
+ * @return {boolean} `true` if the class was added, `false` otherwise
+ */
+export function toggleClass(element: Element, token: string, force?: boolean) {
   // Some browser don't support 'force' argument
   if (force === true) {
     element.classList.add(token);
