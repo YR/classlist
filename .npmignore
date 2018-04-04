@@ -1,4 +1,5 @@
 src/
+coverage/
 karma.conf.ts
 .travis.yml
 yarn.lock
