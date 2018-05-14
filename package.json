@@ -1,7 +1,7 @@
 {
   "name": "@yr/classlist",
   "description": "Ponyfill to fix element.classList browser inconsistencies",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "author": "Alexander Pope <alexander.pope@nrk.no>, Simen Sægrov <simen.sagrov@nrk.no",
   "dependencies": {},
   "devDependencies": {
